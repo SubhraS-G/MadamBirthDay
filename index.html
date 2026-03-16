@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 20th Birthday, Gargee 🌸</title>
+
+  <!-- Preload critical assets -->
+  <link rel="preload" href="css/style.css" as="style" />
+  <link rel="preload" href="js/countdown.js" as="script" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 1 — LOCK SCREEN (Before Birthday)
+  ═══════════════════════════════════════════ -->
+  <section id="lockScreen" class="screen active">
+    <div class="lock-bg-particles" id="lockParticles"></div>
+    <div class="lock-content">
+      <div class="lock-icon">🌸</div>
+      <h1 class="lock-title">Something Beautiful<br /><em>is Coming</em></h1>
+      <p class="lock-subtitle">Your surprise unlocks on 18 March at 12:00 AM IST</p>
+      <div class="countdown-grid">
+        <div class="countdown-unit">
+          <span class="count-number" id="cdDays">00</span>
+          <span class="count-label">Days</span>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-unit">
+          <span class="count-number" id="cdHours">00</span>
+          <span class="count-label">Hours</span>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-unit">
+          <span class="count-number" id="cdMinutes">00</span>
+          <span class="count-label">Minutes</span>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-unit">
+          <span class="count-number" id="cdSeconds">00</span>
+          <span class="count-label">Seconds</span>
+        </div>
+      </div>
+      <p class="lock-hint">— with love, waiting for you —</p>
+    </div>
+    <div class="floating-hearts" id="lockHearts"></div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 2 — ENTRY SCREEN
+  ═══════════════════════════════════════════ -->
+  <section id="entryScreen" class="screen">
+    <div class="entry-bg"></div>
+    <div class="entry-content">
+      <div class="entry-petal">✿</div>
+      <h1 class="entry-title">Welcome to Your<br /><em>20th Chapter</em></h1>
+      <p class="entry-sub">A journey crafted just for you, Gargee.</p>
+      <button class="btn-primary" id="startJourneyBtn">
+        <span>Start Your Journey</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+    <div class="floating-hearts" id="entryHearts"></div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 3 — SECRET CODE PUZZLE
+  ═══════════════════════════════════════════ -->
+  <section id="puzzleScreen" class="screen">
+    <div class="puzzle-content">
+      <div class="puzzle-step" id="puzzleStep1">
+        <div class="puzzle-icon">🔑</div>
+        <h2 class="puzzle-title">Step 1 of 2</h2>
+        <p class="puzzle-desc">Enter her nickname to begin</p>
+        <div class="input-group">
+          <input type="text" id="passwordInput" class="puzzle-input" placeholder="her nickname…" autocomplete="off" />
+          <button class="btn-secondary" id="passwordSubmit">Unlock</button>
+        </div>
+        <p class="puzzle-error hidden" id="passwordError">💔 That's not quite right, love. Try again.</p>
+      </div>
+
+      <div class="puzzle-step hidden" id="puzzleStep2">
+        <div class="puzzle-icon">💭</div>
+        <h2 class="puzzle-title">Step 2 of 2</h2>
+        <p class="puzzle-desc">The date we first talked<br /><em>(DDMM format)</em></p>
+        <div class="input-group">
+          <input type="text" id="riddleInput" class="puzzle-input" placeholder="e.g. 1407" maxlength="4" autocomplete="off" />
+          <button class="btn-secondary" id="riddleSubmit">Continue</button>
+        </div>
+        <p class="puzzle-error hidden" id="riddleError">💔 Hmm, that's not the date I remember. Try again.</p>
+      </div>
+    </div>
+    <div class="confetti-container" id="confettiContainer"></div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 4 — PERSONALIZED LIFE DASHBOARD
+  ═══════════════════════════════════════════ -->
+  <section id="dashboardScreen" class="screen">
+    <div class="dashboard-content">
+      <div class="dash-header">
+        <h2 class="dash-title">Your Life in Numbers</h2>
+        <p class="dash-sub">Everything that makes you, you 💖</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card" data-tooltip="Two incredible decades! 🎂">
+          <div class="stat-icon">🎂</div>
+          <div class="stat-number" data-target="20" data-suffix="">0</div>
+          <div class="stat-label">Years Young</div>
+        </div>
+        <div class="stat-card" data-tooltip="Every single day was a gift 🌅">
+          <div class="stat-icon">📅</div>
+          <div class="stat-number" id="daysLived" data-target="0" data-suffix="">0</div>
+          <div class="stat-label">Days Lived</div>
+        </div>
+        <div class="stat-card" data-tooltip="Every day more wonderful than the last ❤️">
+          <div class="stat-icon">❤️</div>
+          <div class="stat-number" id="daysTogether" data-target="0" data-suffix="">0</div>
+          <div class="stat-label">Days Since We Met</div>
+        </div>
+        <div class="stat-card" data-tooltip="Each one priceless 📸">
+          <div class="stat-icon">📸</div>
+          <div class="stat-number" data-target="247" data-suffix="+">0</div>
+          <div class="stat-label">Memories Made</div>
+        </div>
+        <div class="stat-card" data-tooltip="And I'd send a million more 💌">
+          <div class="stat-icon">💌</div>
+          <div class="stat-number" data-target="1832" data-suffix="">0</div>
+          <div class="stat-label">Messages Sent</div>
+        </div>
+        <div class="stat-card wide" data-tooltip="You make my world infinitely brighter 💖">
+          <div class="stat-icon">💖</div>
+          <div class="stat-label">Happiness Index</div>
+          <div class="happiness-bar">
+            <div class="happiness-fill" id="happinessFill"></div>
+            <span class="happiness-text">100%</span>
+          </div>
+          <p class="happiness-note">You are my 100%.</p>
+        </div>
+      </div>
+      <button class="btn-primary" id="toDashNextBtn">
+        Continue the Journey
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 5 — DIGITAL SCRAPBOOK
+  ═══════════════════════════════════════════ -->
+  <section id="scrapbookScreen" class="screen">
+    <div class="scrapbook-wrap">
+      <div class="scrapbook-header">
+        <h2 class="scrapbook-title">Our Scrapbook</h2>
+        <p class="scrapbook-sub">Tap the pages to turn them 📖</p>
+      </div>
+
+      <div class="flipbook" id="flipbook">
+        <!-- Page 1 -->
+        <div class="page" id="page1">
+          <div class="page-front">
+            <div class="page-content">
+              <div class="page-num">01</div>
+              <h3>Teenage Era<br /><em>Goodbye</em></h3>
+              <img src="images/teen.jpg" alt="Teenage memories" class="page-img" loading="lazy" onerror="this.style.display='none'" />
+              <p class="page-text">The girl who laughed at everything, cried at little things, and dreamed so big the sky felt small.</p>
+              <button class="reveal-note-btn" data-note="teenNote">Read the hidden note 💌</button>
+              <div class="hidden-note hidden" id="teenNote">
+                <p>Your teenage self was already extraordinary. You just didn't know it yet.</p>
+              </div>
+            </div>
+          </div>
+          <div class="page-back">
+            <div class="page-content">
+              <div class="page-num">01 ↩</div>
+              <p class="page-back-text">← Swipe back to relive</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Page 2 -->
+        <div class="page" id="page2">
+          <div class="page-front">
+            <div class="page-content">
+              <div class="page-num">02</div>
+              <h3>First Photo<br /><em>Together</em></h3>
+              <img src="images/first.jpg" alt="First photo" class="page-img" loading="lazy" onerror="this.style.display='none'" />
+              <p class="page-text">The moment this all became real.</p>
+              <button class="reveal-note-btn" data-note="firstNote">Read the hidden note 💌</button>
+              <div class="hidden-note hidden" id="firstNote">
+                <p>I looked at this photo a hundred times that night. Still do.</p>
+              </div>
+            </div>
+          </div>
+          <div class="page-back"><div class="page-content"><div class="page-num">02 ↩</div></div></div>
+        </div>
+
+        <!-- Page 3 -->
+        <div class="page" id="page3">
+          <div class="page-front">
+            <div class="page-content">
+              <div class="page-num">03</div>
+              <h3>Funniest<br /><em>Memory</em></h3>
+              <img src="images/funny.jpg" alt="Funny memory" class="page-img" loading="lazy" onerror="this.style.display='none'" />
+              <p class="page-text"><!-- Edit: describe your funniest shared memory here --> That time when everything went hilariously wrong, and you laughed so hard you couldn't breathe.</p>
+              <button class="reveal-note-btn" data-note="funnyNote">Read the hidden note 💌</button>
+              <div class="hidden-note hidden" id="funnyNote">
+                <p>I still laugh about it. Every. Single. Time.</p>
+              </div>
+            </div>
+          </div>
+          <div class="page-back"><div class="page-content"><div class="page-num">03 ↩</div></div></div>
+        </div>
+
+        <!-- Page 4 -->
+        <div class="page" id="page4">
+          <div class="page-front">
+            <div class="page-content">
+              <div class="page-num">04</div>
+              <h3>Strongest<br /><em>Version of You</em></h3>
+              <img src="images/strong.jpg" alt="Strongest version" class="page-img" loading="lazy" onerror="this.style.display='none'" />
+              <p class="page-text">The version of you that kept going when everything said stop. That's the one I fell for.</p>
+              <button class="reveal-note-btn" data-note="strongNote">Read the hidden note 💌</button>
+              <div class="hidden-note hidden" id="strongNote">
+                <p>You are the bravest person I know. Don't ever forget that.</p>
+              </div>
+            </div>
+          </div>
+          <div class="page-back"><div class="page-content"><div class="page-num">04 ↩</div></div></div>
+        </div>
+
+        <!-- Page 5 -->
+        <div class="page" id="page5">
+          <div class="page-front">
+            <div class="page-content">
+              <div class="page-num">05</div>
+              <h3>Welcome to<br /><em>Adulthood</em></h3>
+              <img src="images/adult.jpg" alt="Welcome to adulthood" class="page-img" loading="lazy" onerror="this.style.display='none'" />
+              <p class="page-text">Twenty years of becoming exactly who you were meant to be. The best chapters are still unwritten.</p>
+              <button class="reveal-note-btn" data-note="adultNote">Read the hidden note 💌</button>
+              <div class="hidden-note hidden" id="adultNote">
+                <p>I can't wait to read the rest of your story — with you.</p>
+              </div>
+            </div>
+          </div>
+          <div class="page-back"><div class="page-content"><div class="page-num">05 ↩</div></div></div>
+        </div>
+      </div>
+
+      <!-- Page Navigation -->
+      <div class="scrapbook-nav">
+        <button class="nav-btn" id="prevPage">← Prev</button>
+        <span class="page-indicator" id="pageIndicator">1 / 5</span>
+        <button class="nav-btn" id="nextPage">Next →</button>
+      </div>
+      <button class="btn-primary mt-2" id="toVideoBtn">Watch the Video 🎥</button>
+    </div>
+    <div class="floating-particles" id="scrapParticles"></div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 6 — CINEMATIC VIDEO REVEAL
+  ═══════════════════════════════════════════ -->
+  <section id="videoScreen" class="screen">
+    <div class="video-wrap">
+      <div class="fade-overlay" id="fadeOverlay"></div>
+      <video id="birthdayVideo" src="video/birthday.mp4" playsinline preload="metadata" class="birthday-video"></video>
+      <div class="video-overlay hidden" id="videoOverlay">
+        <h2 class="video-overlay-text">Welcome to Adulthood.</h2>
+      </div>
+    </div>
+    <div class="video-controls">
+      <button class="btn-ghost" id="playVideoBtn">▶ Play Video</button>
+      <button class="btn-ghost" id="skipVideoBtn">Skip →</button>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 7 (woven throughout) — Audio elements
+  ═══════════════════════════════════════════ -->
+  <audio id="audioIntro" src="audio/intro.mp3" preload="none"></audio>
+  <audio id="audioGuide1" src="audio/guide1.mp3" preload="none"></audio>
+  <audio id="audioBeforeVideo" src="audio/before_video.mp3" preload="none"></audio>
+  <audio id="audioFinal" src="audio/final_message.mp3" preload="none" loop></audio>
+  <audio id="audioBg" src="audio/bg_music.mp3" preload="none" loop></audio>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 8 — FINAL BIRTHDAY MESSAGE
+  ═══════════════════════════════════════════ -->
+  <section id="finalScreen" class="screen">
+    <div class="final-bg-hearts" id="finalHearts"></div>
+    <div class="final-content">
+      <div class="final-flower">🌸</div>
+      <h1 class="final-title">Happy 20th Birthday,</h1>
+      <h1 class="final-name">Gargee.</h1>
+
+      <div class="final-message-box">
+        <!--
+          ╔══════════════════════════════════════╗
+          ║  EDIT YOUR BIRTHDAY MESSAGE BELOW:   ║
+          ╚══════════════════════════════════════╝
+        -->
+        <p>
+          Twenty years ago, the world became a little more magical — because you were born into it.
+          And somewhere along the way, you walked into my world too, and I haven't been the same since.
+        </p>
+        <p>
+          You are extraordinary in the quietest, most profound way. In the way you laugh, in the way you
+          care, in the way you hold yourself even when everything feels heavy. I have watched you grow —
+          not just in years, but in grace, in strength, in the kind of love that asks nothing back.
+        </p>
+        <p>
+          This is your 20th birthday, Gargee. Your teenage years — with all their confusion and beauty —
+          are a story you've now completed. And what a story it is. You carried it so well.
+        </p>
+        <p>
+          As you step into adulthood, I want you to know: every dream you've ever whispered in the dark
+          is still valid. Every version of yourself you've been ashamed of — forgiven and loved. Every
+          future you've imagined — possible.
+        </p>
+        <p>
+          I am so proud of you. I am so lucky to know you. And I will be here — cheering the loudest —
+          as you write every chapter that comes next.
+        </p>
+        <p class="final-sign">Happy 20th, my favourite person. 🌸<br /><em>— with all my love, forever.</em></p>
+        <!--
+          ╚══ END OF EDITABLE MESSAGE ══╝
+        -->
+      </div>
+
+      <button class="btn-primary replay-btn" id="replayBtn">✨ Replay the Journey</button>
+    </div>
+    <div class="floating-hearts large" id="finalHeartsAnim"></div>
+
+    <!-- Hidden Easter Egg Message -->
+    <div class="easter-secret hidden" id="easterSecret">
+      <p>💖 I love you more than all the stars combined. 💖</p>
+      <button class="btn-ghost" onclick="document.getElementById('easterSecret').classList.add('hidden')">Close</button>
+    </div>
+  </section>
+
+  <!-- Toast notification -->
+  <div class="toast hidden" id="toast"></div>
+
+  <script src="js/countdown.js"></script>
+  <script src="js/puzzle.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
