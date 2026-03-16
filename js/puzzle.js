@@ -1,19 +1,8 @@
-/**
- * puzzle.js
- * Handles the two-step secret code puzzle.
- *
- * HOW TO CONFIGURE:
- * 1. Set PASSWORD below (her nickname, lowercase).
- * 2. Set RIDDLE_ANSWER below (DDMM format of date you first talked).
- */
-
 (function () {
   'use strict';
-
-  // ── ✏️  EDIT THESE TWO VALUES ───────────────────────────
-  const PASSWORD     = 'nickname';   // ← Replace with her actual nickname (lowercase)
-  const RIDDLE_ANSWER = '1803';      // ← Replace with DDMM of the date you first talked
-  // ────────────────────────────────────────────────────────
+  
+  const PASSWORD     = 'sharg'; 
+  const RIDDLE_ANSWER = '1803';
 
   let puzzleReady = false;
 
