@@ -8,15 +8,12 @@
 (function () {
   'use strict';
 
-  // ── ✏️  CONFIGURATION — EDIT THESE ─────────────────────
   const CONFIG = {
-    // Birthday date (YYYY, MM-1, DD) — do not change
-    birthdayDate: new Date(2006, 2, 18), // 18 March 2006
+  
+    birthdayDate: new Date(2006, 2, 18),
 
-    // Date you two first met/talked (YYYY, MM-1, DD)
-    metDate: new Date(2024, 5, 15),      // ← CHANGE THIS to your real date
+    metDate: new Date(2024, 3, 13),
 
-    // Fun stat overrides (change freely)
     memoriesCount: 247,
     messagesSent: 1832,
   };
