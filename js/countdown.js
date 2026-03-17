@@ -10,7 +10,7 @@
   // ── Configuration ──────────────────────────────────────
   // Birthday unlock target: 18 March 2026, 00:00:00 IST (UTC+5:30)
   // In UTC: 17 March 2026, 18:30:00 UTC
-  const BIRTHDAY_UTC = Date.UTC(2026, 2, 16, 18, 30, 0); // Month is 0-indexed
+  const BIRTHDAY_UTC = Date.UTC(2026, 2, 17, 18, 30, 0); // Month is 0-indexed
 
   /**
    * Get current time in IST using Intl API.
