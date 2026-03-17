@@ -36,8 +36,14 @@
   /**
    * Check if we have passed the birthday unlock time.
    * Compares current UTC timestamp against BIRTHDAY_UTC.
+   *
+   * DEV BYPASS: Add ?preview=true to URL to skip the lock.
+   * e.g. index.html?preview=true
+   * REMOVE this param before sharing with her!
    */
   function isBirthdayUnlocked() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('preview') === 'true') return true;
     return Date.now() >= BIRTHDAY_UTC;
   }
 
